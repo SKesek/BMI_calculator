@@ -16,6 +16,8 @@ class InputPage extends StatefulWidget {
 class _InputPageState extends State<InputPage> {
   Gender? selectedGender;
   int height = 180;
+  int weight = 60;
+  int age = 18;
 
   @override
   Widget build(BuildContext context) {
@@ -93,11 +95,13 @@ class _InputPageState extends State<InputPage> {
                   SliderTheme(
                     data: SliderTheme.of(context).copyWith(
                       activeTrackColor: Colors.white,
-                      inactiveTrackColor: Color(0xFF8D8E98),
-                      thumbColor: Color(0XFFEB1555),
-                      thumbShape: RoundSliderThumbShape(enabledThumbRadius: 15),
-                      overlayShape: RoundSliderOverlayShape(overlayRadius: 30),
-                      overlayColor: Color(0X29EB1555),
+                      inactiveTrackColor: const Color(0xFF8D8E98),
+                      thumbColor: const Color(0XFFEB1555),
+                      thumbShape:
+                          const RoundSliderThumbShape(enabledThumbRadius: 15),
+                      overlayShape:
+                          const RoundSliderOverlayShape(overlayRadius: 30),
+                      overlayColor: const Color(0X29EB1555),
                     ),
                     child: Slider(
                       value: height.toDouble(),
@@ -120,13 +124,101 @@ class _InputPageState extends State<InputPage> {
                 Expanded(
                   child: ReusableCode(
                     color: kActiveCardColor,
-                    cardChild: Container(),
+                    cardChild: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text(
+                          'WEIGHT',
+                          style: kLabelTextStyle,
+                        ),
+                        Text(
+                          weight.toString(),
+                          style: kNumberTextStyle,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                  backgroundColor: const Color(0xFF4C4F5E),
+                                  shape: const CircleBorder(),
+                                  fixedSize: const Size(56, 56)),
+                              onPressed: () {
+                                setState(() {
+                                  weight--;
+                                });
+                              },
+                              child: const Icon(FontAwesomeIcons.minus),
+                            ),
+                            const SizedBox(
+                              width: 10,
+                            ),
+                            ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                  backgroundColor: const Color(0xFF4C4F5E),
+                                  shape: const CircleBorder(),
+                                  fixedSize: const Size(56, 56)),
+                              onPressed: () {
+                                setState(() {
+                                  weight++;
+                                });
+                              },
+                              child: const Icon(FontAwesomeIcons.plus),
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
                   ),
                 ),
                 Expanded(
                   child: ReusableCode(
                     color: kActiveCardColor,
-                    cardChild: Container(),
+                    cardChild: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text(
+                          'AGE',
+                          style: kLabelTextStyle,
+                        ),
+                        Text(
+                          age.toString(),
+                          style: kNumberTextStyle,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                  backgroundColor: const Color(0xFF4C4F5E),
+                                  shape: const CircleBorder(),
+                                  fixedSize: const Size(56, 56)),
+                              onPressed: () {
+                                setState(() {
+                                  age--;
+                                });
+                              },
+                              child: const Icon(FontAwesomeIcons.minus),
+                            ),
+                            const SizedBox(
+                              width: 10,
+                            ),
+                            ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                  backgroundColor: const Color(0xFF4C4F5E),
+                                  shape: const CircleBorder(),
+                                  fixedSize: const Size(56, 56)),
+                              onPressed: () {
+                                setState(() {
+                                  age++;
+                                });
+                              },
+                              child: const Icon(FontAwesomeIcons.plus),
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ],
@@ -143,3 +235,21 @@ class _InputPageState extends State<InputPage> {
     );
   }
 }
+
+// class RoundIconButton extends StatelessWidget {
+//   const RoundIconButton({Key? key, required this.icon, required this.onPressed})
+//       : super(key: key);
+//
+//   final IconData icon;
+//   final Function onPressed;
+//   @override
+//   Widget build(BuildContext context) {
+//     return RawMaterialButton(
+//       onPressed: onPressed(),
+//       constraints: const BoxConstraints.tightFor(width: 56, height: 56),
+//       shape: const CircleBorder(),
+//       fillColor: const Color(0xFF4C4F5E),
+//       child: Icon(icon),
+//     );
+//   }
+// }

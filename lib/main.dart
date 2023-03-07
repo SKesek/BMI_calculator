@@ -13,9 +13,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark().copyWith(
-        scaffoldBackgroundColor: Color(0xFF0A0E21),
+        scaffoldBackgroundColor: const Color(0xFF0A0E21),
         colorScheme: ColorScheme.fromSwatch().copyWith(
-          primary: Color(0xFF0A0E21),
+          primary: const Color(0xFF0A0E21),
         ),
       ),
       home: const InputPage(),
