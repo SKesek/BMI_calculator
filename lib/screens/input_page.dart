@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../components/reusable_card.dart';
 import '../components/icon_content.dart';
 import '../constants.dart';
+import 'package:bmi_calculator/calculation_brain.dart';
 
 enum Gender { male, female }
 
@@ -227,8 +228,17 @@ class _InputPageState extends State<InputPage> {
           ),
           GestureDetector(
             onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const ResultsPage()));
+              CalculationBrain calc =
+                  CalculationBrain(height: height, weight: weight);
+
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => ResultsPage(
+                            bmiResult: calc.calculateBMI(),
+                            resultText: calc.getResult(),
+                            interpretation: calc.getIntepretation(),
+                          )));
             },
             child: Container(
               padding: const EdgeInsets.only(bottom: 20),
